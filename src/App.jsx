@@ -10,13 +10,13 @@ export const App = () => {
   const onChangeEmail = (event) => setEmail(event.target.value);
 
   const onClickAdd = () => {
-    const names = name;
-    setName(names);
-    localStorage.setItem("names", names);
+    // setName(name);
+    console.log(name);
+    localStorage.setItem("name", name);
 
-    const emails = email;
-    setEmail(emails);
-    localStorage.setItem("emails", emails);
+    // setEmail(email);
+    console.log(email);
+    localStorage.setItem("email", email);
   };
 
   const onClickDelete = () => {
