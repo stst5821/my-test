@@ -3,22 +3,19 @@ import "./App.css";
 
 export const App = () => {
   // 名前をセットする
-  const [name, setName] = useState("");
+  const [name, setName] = useState();
   const onChangeName = (event) => setName(event.target.value);
   // メールアドレスをセット
   const [email, setEmail] = useState("");
   const onChangeEmail = (event) => setEmail(event.target.value);
 
   const onClickAdd = () => {
-    const names = name;
-    setName(names);
-    localStorage.setItem("names", names);
-
-    const emails = email;
-    setEmail(emails);
-    localStorage.setItem("emails", emails);
+    // localStorageにname,indexを保存
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
   };
 
+  // localStorageの中身を削除。テスト用。不要になったら消す。
   const onClickDelete = () => {
     localStorage.clear();
   };
@@ -26,10 +23,12 @@ export const App = () => {
   return (
     <div className="App">
       <h1>app.js</h1>
+      <p>{localStorage.getItem("name")}</p>
       <label>
         名前：
         <input
           placeholder="名前を入力"
+          defaultValue={localStorage.getItem("name")}
           value={name}
           onChange={onChangeName}
           type="text"
@@ -41,6 +40,7 @@ export const App = () => {
         メールアドレス：
         <input
           placeholder="メールアドレスを入力"
+          defaultValue={localStorage.getItem("email")}
           value={email}
           onChange={onChangeEmail}
           type="text"
